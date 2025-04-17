@@ -8,4 +8,4 @@ compile:
 	ln -sf build/compile_commands.json .
 
 execute:
-	cd build && ./eigenMatrix
+	cd build && ./useGeometry

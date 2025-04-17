@@ -8,7 +8,7 @@ using namespace Eigen;
 
 #define MATRIX_SIZE 50
 
-int main(int args, char **argv) {
+void eigenMatrixExample(int args, char **argv) {
   // 2 * 3 행렬 생성
   Matrix<float, 2, 3> matrix_23;
   // vector -> 한개의 열 또는 행으로만 이루어진 배열
@@ -106,6 +106,4 @@ int main(int args, char **argv) {
   cout << "LDLT 분해 방법의 소요 시간: "
        << 1000 * (clock() - time_stt) / (double)CLOCKS_PER_SEC << "ms" << endl;
   cout << "x = " << x.transpose() << endl;
-
-  return 0;
 }
