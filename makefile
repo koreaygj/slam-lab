@@ -2,7 +2,7 @@ prepare:
 	rm -rf build
 	mkdir build
 
-compile: 
+build: 
 	cd ./build && cmake ..
 	cd build && make
 	ln -sf build/compile_commands.json .
