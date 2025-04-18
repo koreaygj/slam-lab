@@ -6,6 +6,3 @@ compile:
 	cd ./build && cmake ..
 	cd build && make
 	ln -sf build/compile_commands.json .
-
-execute:
-	cd build && ./useGeometry

@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 3.5)
-project(useGeometry)
+project(plotTrajectory)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
-add_executable(useGeometry useGeometry.cpp)
+find_package(VTK REQUIRED)
+include(${VTK_USE_FILE}) 
+
+add_executable(plotTrajectory plotTrajectory.cpp)
+target_link_libraries(plotTrajectory ${VTK_LIBRARIES}) 
