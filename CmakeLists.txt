@@ -1,13 +1,27 @@
 cmake_minimum_required(VERSION 3.5)
-project(plotTrajectory)
+project(main)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(APPLE)
+    set(CMAKE_MACOSX_RPATH ON)
+    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+    set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+endif()
 
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
-find_package(VTK REQUIRED)
-include(${VTK_USE_FILE}) 
+find_package(Sophus REQUIRED)
+include_directories(${Sophus_INCLUDE_DIRS})
 
-add_executable(plotTrajectory plotTrajectory.cpp)
-target_link_libraries(plotTrajectory ${VTK_LIBRARIES}) 
+find_package(Pangolin REQUIRED)
+include_directories(${Pangolin_INCLUDE_DIR})
+
+add_executable(main main.cpp)
+target_link_libraries(main Sophus::Sophus ${EIGEN3_LIBRARIES} ${Pangolin_LIBRARIES})
